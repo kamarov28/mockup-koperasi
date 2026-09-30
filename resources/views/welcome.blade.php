@@ -56,70 +56,13 @@
                 </div>
 
                 <div class="flex justify-center">
-                    <div class="relative w-full max-w-[460px]">
-                        <!-- Financial Illustration matching 02_halaman_utama_pengunjung -->
-                        <svg viewBox="0 0 520 400" class="w-full h-auto drop-shadow-sm" xmlns="http://www.w3.org/2000/svg">
-                            <!-- Background shapes -->
-                            <rect x="30" y="30" width="460" height="340" rx="28" fill="#f0f6ff" />
-                            <circle cx="430" cy="80" r="50" fill="#e0eeff" opacity="0.6" />
-                            <circle cx="70" cy="300" r="30" fill="#fde68a" opacity="0.4" />
-
-                            <!-- Financial Chart Card -->
-                            <g filter="drop-shadow(0 8px 16px rgba(15,23,42,0.06))">
-                                <rect x="80" y="60" width="360" height="230" rx="16" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" />
-                                
-                                <!-- Card Header -->
-                                <circle cx="115" cy="95" r="14" fill="#eff6ff" />
-                                <path d="M110 95 L114 99 L122 91" fill="none" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                <rect x="140" y="88" width="90" height="7" rx="3.5" fill="#0f2942" />
-                                <rect x="140" y="100" width="55" height="5" rx="2.5" fill="#94a3b8" />
-                                <rect x="370" y="88" width="45" height="18" rx="9" fill="#dcfce7" />
-                                <text x="392" y="101" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#15803d" text-anchor="middle">+24%</text>
-
-                                <!-- Grid Lines -->
-                                <line x1="110" y1="140" x2="410" y2="140" stroke="#f1f5f9" stroke-width="1.5" />
-                                <line x1="110" y1="180" x2="410" y2="180" stroke="#f1f5f9" stroke-width="1.5" />
-                                <line x1="110" y1="220" x2="410" y2="220" stroke="#f1f5f9" stroke-width="1.5" />
-
-                                <!-- Chart Trend Bars & Line -->
-                                <rect x="135" y="190" width="22" height="50" rx="5" fill="#dbeafe" />
-                                <rect x="190" y="165" width="22" height="75" rx="5" fill="#bfdbfe" />
-                                <rect x="245" y="150" width="22" height="90" rx="5" fill="#93c5fd" />
-                                <rect x="300" y="130" width="22" height="110" rx="5" fill="#60a5fa" />
-                                <rect x="355" y="110" width="22" height="130" rx="5" fill="#2563eb" />
-
-                                <!-- Floating Accent Line -->
-                                <path d="M146 185 Q 200 150, 256 142 T 366 100" fill="none" stroke="#f59e0b" stroke-width="3" stroke-linecap="round" />
-                                <circle cx="366" cy="100" r="5" fill="#f59e0b" />
-                            </g>
-
-                            <!-- Cooperative Character Left (Woman working with tablet) -->
-                            <g transform="translate(60, 200)">
-                                <circle cx="35" cy="35" r="22" fill="#fed7aa" />
-                                <path d="M20 30 Q 35 15, 50 30 Q 45 42, 20 30 Z" fill="#9a3412" />
-                                <path d="M10 85 C 10 60, 60 60, 60 85 Z" fill="#1d5ec9" />
-                                <rect x="25" y="65" width="30" height="20" rx="3" fill="#ffffff" stroke="#cbd5e1" />
-                            </g>
-
-                            <!-- Cooperative Character Right (Man with report) -->
-                            <g transform="translate(390, 195)">
-                                <circle cx="35" cy="35" r="22" fill="#fde68a" />
-                                <path d="M18 26 Q 35 12, 52 26 Q 48 36, 18 26 Z" fill="#1e293b" />
-                                <path d="M10 85 C 10 60, 60 60, 60 85 Z" fill="#0d9488" />
-                                <circle cx="15" cy="70" r="14" fill="#fbbf24" stroke="#f59e0b" stroke-width="2" />
-                                <text x="15" y="75" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="#78350f" text-anchor="middle">Rp</text>
-                            </g>
-
-                            <!-- Stacks of Coins Badge bottom center -->
-                            <g transform="translate(210, 275)" filter="drop-shadow(0 6px 12px rgba(0,0,0,0.08))">
-                                <rect x="0" y="0" width="105" height="52" rx="12" fill="#ffffff" stroke="#e2e8f0" />
-                                <circle cx="28" cy="26" r="14" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.5" />
-                                <circle cx="28" cy="26" r="10" fill="none" stroke="#d97706" stroke-width="1" stroke-dasharray="2,2"/>
-                                <text x="28" y="30" font-family="system-ui, sans-serif" font-size="10" font-weight="bold" fill="#b45309" text-anchor="middle">Rp</text>
-                                <text x="50" y="22" font-family="system-ui, sans-serif" font-size="10" fill="#64748b" font-weight="500">Aset Koperasi</text>
-                                <text x="50" y="36" font-family="system-ui, sans-serif" font-size="11" fill="#0f172a" font-weight="700">Terpercaya</text>
-                            </g>
-                        </svg>
+                    <div class="relative w-full max-w-[480px]">
+                        <!-- Hero Banner Illustration (1:1 with 02_halaman_utama_pengunjung) -->
+                        <img
+                            src="{{ asset('images/hero-banner.jpg') }}"
+                            alt="Ilustrasi Kesejahteraan Anggota Koperasi"
+                            class="w-full h-auto rounded-2xl drop-shadow-sm object-contain"
+                        />
                     </div>
                 </div>
             </section>
