@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome')->name('home');
+Route::view('/tentang', 'tentang')->name('tentang');
+Route::view('/layanan', 'layanan')->name('layanan');
+Route::view('/kontak', 'kontak')->name('kontak');
 
 // Nasabah Routes
 Route::prefix('nasabah')->name('nasabah.')->group(function () {
