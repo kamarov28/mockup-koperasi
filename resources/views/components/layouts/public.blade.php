@@ -3,21 +3,21 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ $title ?? 'Koperasi Simpan Pinjam' }} - Koperasi Simpan Pinjam</title>
+    <title>{{ $title ?? 'Beranda' }} - Koperasi Bina Bangkit Mandiri</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="bg-[#edf3fc] text-[#0c1e40] min-h-screen antialiased flex flex-col justify-between font-sans selection:bg-[#1d5ec9] selection:text-white">
     <div class="max-w-6xl mx-auto px-6 py-6 w-full">
-        <!-- Navigation Header (1:1 with 02_halaman_utama_pengunjung) -->
+        <!-- Navigation Header -->
         <nav class="flex items-center justify-between py-2">
-            <div class="flex items-center gap-10">
+            <div class="flex items-center gap-8">
                 <a href="{{ route('home') }}" class="font-bold text-lg text-[#0c1e40] flex items-center gap-2.5">
                     <span class="w-8 h-8 rounded-lg bg-[#1d5ec9] flex items-center justify-center text-white shadow-sm">
                         <x-lucide name="building-2" class="w-4 h-4 text-white" />
                     </span>
-                    <span>Koperasi Simpan Pinjam</span>
+                    <span class="tracking-tight">Koperasi Bina Bangkit Mandiri</span>
                 </a>
-                <div class="hidden md:flex items-center gap-7 text-sm font-medium">
+                <div class="hidden md:flex items-center gap-6 text-sm font-medium">
                     <a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'text-[#1d5ec9] font-semibold' : 'text-[#5c6b84] hover:text-[#0c1e40] transition' }}">
                         Beranda
                     </a>
@@ -27,6 +27,12 @@
                     <a href="{{ route('layanan') }}" class="{{ request()->routeIs('layanan') ? 'text-[#1d5ec9] font-semibold' : 'text-[#5c6b84] hover:text-[#0c1e40] transition' }}">
                         Layanan
                     </a>
+                    <a href="{{ route('berita') }}" class="{{ request()->routeIs('berita') ? 'text-[#1d5ec9] font-semibold' : 'text-[#5c6b84] hover:text-[#0c1e40] transition' }}">
+                        Berita & Pengumuman
+                    </a>
+                    <a href="{{ route('galeri') }}" class="{{ request()->routeIs('galeri') ? 'text-[#1d5ec9] font-semibold' : 'text-[#5c6b84] hover:text-[#0c1e40] transition' }}">
+                        Galeri
+                    </a>
                     <a href="{{ route('kontak') }}" class="{{ request()->routeIs('kontak') ? 'text-[#1d5ec9] font-semibold' : 'text-[#5c6b84] hover:text-[#0c1e40] transition' }}">
                         Kontak
                     </a>
@@ -34,8 +40,8 @@
             </div>
 
             <div class="flex items-center gap-3">
-                <a href="{{ route('login') }}" class="bg-[#1d5ec9] hover:bg-[#154cb0] text-white text-sm font-semibold px-7 py-2.5 rounded-lg shadow-sm transition">
-                    Login
+                <a href="{{ route('login') }}" class="bg-[#1d5ec9] hover:bg-[#154cb0] text-white text-sm font-semibold px-6 py-2.5 rounded-lg shadow-sm transition">
+                    Portal Anggota
                 </a>
             </div>
         </nav>
@@ -49,10 +55,11 @@
     <!-- Minimal Clean Footer -->
     <footer class="border-t border-slate-200/60 py-6 text-center text-xs text-[#5c6b84] bg-white/40">
         <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-3">
-            <span>&copy; {{ date('Y') }} Koperasi Simpan Pinjam Sekolah. Semua Hak Dilindungi.</span>
+            <span>&copy; {{ date('Y') }} Koperasi Bina Bangkit Mandiri. Semua Hak Dilindungi.</span>
             <div class="flex items-center gap-5">
                 <a href="{{ route('tentang') }}" class="hover:text-[#0c1e40] transition">Tentang Kami</a>
-                <a href="{{ route('layanan') }}" class="hover:text-[#0c1e40] transition">Kebijakan Privasi</a>
+                <a href="{{ route('berita') }}" class="hover:text-[#0c1e40] transition">Pengumuman</a>
+                <a href="{{ route('galeri') }}" class="hover:text-[#0c1e40] transition">Galeri Kegiatan</a>
                 <a href="{{ route('kontak') }}" class="hover:text-[#0c1e40] transition">Kontak</a>
             </div>
         </div>
