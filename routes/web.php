@@ -15,7 +15,9 @@ Route::prefix('nasabah')->name('nasabah.')->group(function () {
     Route::view('/simpanan', 'nasabah.simpanan')->name('simpanan');
     Route::view('/pinjaman/pengajuan', 'nasabah.pengajuan-pinjaman')->name('pinjaman.pengajuan');
     Route::view('/pinjaman', 'nasabah.pinjaman')->name('pinjaman');
+    Route::view('/toko', 'nasabah.toko')->name('toko');
     Route::view('/transaksi', 'nasabah.transaksi')->name('transaksi');
+    Route::view('/dokumen', 'nasabah.dokumen')->name('dokumen');
     Route::view('/profil', 'nasabah.profil')->name('profil');
 });
 
