@@ -9,6 +9,7 @@ test('portal nasabah dapat diakses dengan sukses', function (string $route) {
     'nasabah.simpanan',
     'nasabah.pinjaman',
     'nasabah.pinjaman.pengajuan',
+    'nasabah.toko',
     'nasabah.transaksi',
     'nasabah.dokumen',
     'nasabah.profil',
