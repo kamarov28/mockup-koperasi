@@ -71,3 +71,30 @@ test('loan applications reject invalid amounts, tenors, and purposes', function 
 
     expect(DB::table('pinjaman')->count())->toBe(0);
 });
+
+test('loan tenor choices honor the maximum configured by the administrator', function () {
+    createLoanApplicationTable();
+    DB::table('koperasi_settings')->insert([
+        'key' => 'max_tenor',
+        'value' => '12',
+        'created_at' => now(),
+        'updated_at' => now(),
+    ]);
+
+    $user = User::factory()->create();
+    $this->actingAs($user)
+        ->get(route('nasabah.pinjaman.pengajuan'))
+        ->assertOk()
+        ->assertSee('12 Bulan')
+        ->assertDontSee('24 Bulan');
+
+    $this->from(route('nasabah.pinjaman.pengajuan'))
+        ->post(route('nasabah.pinjaman.pengajuan.store'), [
+            'amount' => 1000000,
+            'tenor' => 24,
+            'purpose' => 'pendidikan',
+        ])
+        ->assertSessionHasErrors('tenor');
+
+    expect(DB::table('pinjaman')->count())->toBe(0);
+});

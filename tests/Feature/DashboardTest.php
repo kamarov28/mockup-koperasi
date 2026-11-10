@@ -49,7 +49,20 @@ test('authenticated users can visit the dashboard', function () {
     $this->actingAs($user);
 
     $response = $this->get(route('dashboard'));
-    $response->assertOk();
+    $response->assertRedirect(route('nasabah.dashboard'));
+});
+
+test('admin users are redirected to the admin dashboard', function () {
+    Schema::table('users', function (Blueprint $table) {
+        $table->string('role')->default('nasabah');
+    });
+
+    $user = User::factory()->create();
+    $user->forceFill(['role' => 'admin'])->save();
+
+    $this->actingAs($user)
+        ->get(route('dashboard'))
+        ->assertRedirect(route('admin.dashboard'));
 });
 
 test('nasabah dashboard shows summaries and transactions for the authenticated user only', function () {

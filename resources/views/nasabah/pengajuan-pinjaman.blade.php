@@ -29,7 +29,7 @@
                 <label for="tenor" class="mb-1.5 block text-sm font-medium text-[#475569]">Jangka Waktu</label>
                 <select id="tenor" name="tenor" required class="w-full rounded-lg border border-slate-200 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
                     <option value="">Pilih jangka waktu</option>
-                    @foreach ([3, 6, 12, 24] as $months)
+                    @foreach ($tenors as $months)
                         <option value="{{ $months }}" @selected((string) old('tenor') === (string) $months)>{{ $months }} Bulan</option>
                     @endforeach
                 </select>

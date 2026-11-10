@@ -1,44 +1,48 @@
 <x-layouts.admin title="Dashboard Admin">
-    <!-- Header Halaman (1:1 with 09_dashboard_admin) -->
-    <div class="mb-6">
-        <h1 class="text-xl font-bold text-[#0f172a]">Dashboard Admin</h1>
-        <h2 class="text-lg font-semibold text-[#1e293b] mt-2">Selamat Datang, Admin</h2>
-        <p class="text-xs sm:text-sm text-[#64748b] mt-0.5">Kelola data koperasi dengan mudah.</p>
+    <h1 class="mb-1 text-2xl font-bold text-slate-900">Dashboard Admin</h1>
+    <p class="mb-6 text-sm text-slate-500">Ringkasan data yang tersimpan di database.</p>
+
+    @if (session('status'))
+        <div class="mb-5 rounded-lg bg-emerald-50 p-3 text-sm text-emerald-800">{{ session('status') }}</div>
+    @endif
+
+    <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        @foreach ([
+            ['Total Nasabah', number_format($memberCount, 0, ',', '.'), 'users'],
+            ['Saldo Simpanan', 'Rp '.number_format($totalSavings, 0, ',', '.'), 'wallet'],
+            ['Pinjaman Disetujui', 'Rp '.number_format($activeLoans, 0, ',', '.'), 'credit-card'],
+            ['Menunggu Persetujuan', number_format($pendingLoans + $pendingOrders, 0, ',', '.'), 'clock'],
+        ] as [$label, $value, $icon])
+            <section class="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+                <p class="text-sm text-slate-500">{{ $label }}</p>
+                <p class="mt-2 text-2xl font-bold text-slate-900">{{ $value }}</p>
+            </section>
+        @endforeach
     </div>
 
-    <!-- 3 Summary Stack Cards (1:1 with 09_dashboard_admin) -->
-    <div class="space-y-4 max-w-xl">
-        <!-- Card 1: Total Nasabah -->
-        <div class="bg-white p-5 rounded-xl border border-slate-200/80 shadow-[0_2px_10px_rgba(0,0,0,0.03)] flex items-center justify-between">
-            <div>
-                <span class="text-xs font-medium text-[#64748b]">Total Nasabah</span>
-                <div class="text-2xl font-bold text-[#0f172a] mt-0.5">45</div>
-            </div>
-            <div class="w-10 h-10 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center">
-                <x-lucide name="users" class="w-5 h-5 text-blue-600" />
-            </div>
+    <div class="mt-8 rounded-xl border border-slate-200 bg-white">
+        <div class="border-b border-slate-100 p-5">
+            <h2 class="font-semibold text-slate-900">Transaksi terbaru</h2>
         </div>
-
-        <!-- Card 2: Total Simpanan -->
-        <div class="bg-white p-5 rounded-xl border border-slate-200/80 shadow-[0_2px_10px_rgba(0,0,0,0.03)] flex items-center justify-between">
-            <div>
-                <span class="text-xs font-medium text-[#64748b]">Total Simpanan</span>
-                <div class="text-2xl font-bold text-[#0f172a] mt-0.5">Rp 45.000.000</div>
-            </div>
-            <div class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center">
-                <x-lucide name="wallet" class="w-5 h-5 text-emerald-600" />
-            </div>
-        </div>
-
-        <!-- Card 3: Total Pinjaman -->
-        <div class="bg-white p-5 rounded-xl border border-slate-200/80 shadow-[0_2px_10px_rgba(0,0,0,0.03)] flex items-center justify-between">
-            <div>
-                <span class="text-xs font-medium text-[#64748b]">Total Pinjaman</span>
-                <div class="text-2xl font-bold text-[#0f172a] mt-0.5">Rp 60.000.000</div>
-            </div>
-            <div class="w-10 h-10 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center">
-                <x-lucide name="credit-card" class="w-5 h-5 text-purple-600" />
-            </div>
+        <div class="overflow-x-auto">
+            <table class="w-full text-left text-sm">
+                <thead class="bg-slate-50 text-xs uppercase text-slate-500">
+                    <tr><th class="p-3">Tanggal</th><th class="p-3">Nasabah</th><th class="p-3">Jenis</th><th class="p-3 text-right">Jumlah</th><th class="p-3">Keterangan</th></tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100">
+                    @forelse ($recentTransactions as $transaction)
+                        <tr>
+                            <td class="p-3">{{ $transaction->tanggal }}</td>
+                            <td class="p-3">{{ $transaction->member_name ?? 'Nasabah tidak ditemukan' }}</td>
+                            <td class="p-3">{{ ucfirst($transaction->jenis) }}</td>
+                            <td class="p-3 text-right">Rp {{ number_format((float) $transaction->jumlah, 0, ',', '.') }}</td>
+                            <td class="p-3">{{ $transaction->keterangan }}</td>
+                        </tr>
+                    @empty
+                        <tr><td colspan="5" class="p-6 text-center text-slate-500">Belum ada transaksi.</td></tr>
+                    @endforelse
+                </tbody>
+            </table>
         </div>
     </div>
 </x-layouts.admin>
